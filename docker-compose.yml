@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+  solc:
+    build:
+      context: ./contracts
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app

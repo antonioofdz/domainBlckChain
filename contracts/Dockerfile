@@ -1,0 +1,3 @@
+FROM ethereum/solc:stable
+
+WORKDIR /app
