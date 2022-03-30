@@ -1,8 +1,44 @@
 version: "3.3"
 services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      ENV: local
+    volumes:
+      - .:/app
+    restart: always
+
   solc:
     build:
       context: ./contracts
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.solc
     volumes:
       - .:/app
+
+  eth:
+    build:
+      context: ./contracts
+      dockerfile: ./Dockerfile.tools
+    volumes:
+      - .:/app
+
+  ganache:
+    build:
+      context: ./tools
+      dockerfile: ./Dockerfile.ganache
+    ports:
+      - 8545:8545
+
+
+
+  # eth:
+  #   image: ethereum/client-go:stable
+  #   ports:
+  #     - 30303:30303
+
+# Note, if you are running an Ethereum client inside a Docker container, you should mount a data volume as the client’s data directory 
+# (located at /root/.ethereum inside the container) to ensure that downloaded data is preserved between restarts and/or container life-cycles.

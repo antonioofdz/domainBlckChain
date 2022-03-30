@@ -1,0 +1,5 @@
+FROM trufflesuite/ganache-cli
+
+WORKDIR /app
+
+# CMD ["ganache-cli", "-h", "0.0.0.0"]

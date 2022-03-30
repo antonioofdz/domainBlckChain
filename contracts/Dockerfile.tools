@@ -1,0 +1,3 @@
+FROM ethereum/client-go:alltools-latest
+
+WORKDIR /app
